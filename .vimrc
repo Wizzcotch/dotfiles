@@ -24,6 +24,9 @@ Plugin 'chriskempson/base16-vim' "For the ill colors
 Plugin 'tpope/vim-surround' "For the ill surrounding stuff
 Plugin 'nathanaelkane/vim-indent-guides' "For the ill indents
 Plugin 'bronson/vim-trailing-whitespace' "Say good bye to all trailing spaces
+Plugin 'wakatime/vim-wakatime'
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
 
 call vundle#end()		" required
 filetype plugin indent on 	" required
@@ -99,7 +102,7 @@ if $COLORTERM == ""
     syntax enable
     colorscheme solarized
 else
-    colorscheme base16-atelierdune
+    "colorscheme base16-atelierdune
     let base16colorspace=256
     "let g:airline_theme = 'light'
 endif
@@ -156,3 +159,15 @@ nmap <C-p> :bprevious<CR>
 
 filetype indent on
 set smartindent
+
+"Enable mouse scrolling
+set mouse=a
+
+function! s:insert_gates()
+    let gatename = substitute(toupper(expand("%:t")), "\\.", "_", "g")
+    execute "normal! i#ifndef " . gatename
+    execute "normal! o#define " . gatename . " "
+    execute "normal! Go#endif /* " . gatename . " */"
+    normal! kk
+endfunction
+autocmd BufNewFile *.{h,hpp} call <SID>insert_gates()
