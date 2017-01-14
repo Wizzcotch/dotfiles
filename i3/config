@@ -11,9 +11,7 @@ focus_follows_mouse no
 hide_edge_borders both
 
 # start a terminal#
-bindsym $mod+Return exec gnome-terminal
-#bindsym $mod+Return  exec urxvt
-#bindsym $mod+Return exec termite
+bindsym $mod+Return  exec urxvt
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -22,9 +20,9 @@ bindsym $mod+d exec --no-startup-id dmenu_run
 #bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # autostart applications
-exec nm-applet
+#exec nm-applet
 #exec nitrogen --restore
-exec --no-startup-id ~/bin/caps_to_control.sh
+#exec --no-startup-id ~/bin/caps_to_control.sh
 #exec --no-startup-id ~/bin/nocaps.sh
 
 #exec --no-startup-id nm-applet
@@ -158,8 +156,6 @@ set $orange #E59847
 set $cyan   #2AA198
 set $dark   #00252E
 
-#name                   #top    #border #text
-
 bar {
     status_command i3status
     #status_command i3blocks -c ~/.i3blocks/i3blocks.conf
@@ -172,18 +168,19 @@ bar {
     #font pango: Droid Sans Mono 10
     font pango: OpenSans 10
     #tray_output none
+
   colors {
-    separator #dc322f
-    background #002b36
-    statusline #268bd2
-    focused_workspace #fdf6e3 #859900 #fdf6e3
-    active_workspace #fdf6e3 #6c71c4 #fdf6e3
-    inactive_workspace #586e75 #93a1a1 #002b36
-    urgent_workspace #d33682 #d33682 #fdf6e3
+    separator #000000
+    background #FFB3D9
+    statusline #000000
+##                    BORDER  BG      TEXT
+    focused_workspace #FFB3D9 #FF3399 #FFFFFF
+    active_workspace #FDF6E3 #6C71C4 #FDF6E3
+    inactive_workspace #FFB3D9 #FFB3D9 #000000
+    urgent_workspace #D33682 #D33682 #FDF6E3
   }
+
+  status_command i3status -c ~/.i3/i3status.conf
 }
 
-client.focused #859900 #859900 #fdf6e3 #859900
-client.focused_inactive #073642 #073642 #eee8d5 #6c71c4
-client.unfocused #073642 #073642 #93a1a1 #586e75
-client.urgent #d33682 #d33682 #fdf6e3 #dc322f
+

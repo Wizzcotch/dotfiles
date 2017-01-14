@@ -2,31 +2,76 @@
 *.foreground:   #c2c2b0
 *.background:   #121212
 *.cursorColor:  #c2c2b0
+
 ! black
 *.color0:       #121212
 *.color8:       #121212
+
 ! red
 *.color1:       #5F8787
 *.color9:       #5F8787
+
 ! green
 *.color2:       #444444
 *.color10:      #444444
+
 ! yellow
 *.color3:       #666666
 *.color11:      #666666
+
 ! blue
 *.color4:       #888888
 *.color12:      #888888
+
 ! magenta
 *.color5:       #999999
 *.color13:      #999999
+
 ! cyan
 *.color6:       #aaaaaa
 *.color14:      #aaaaaa
+
 ! white
 *.color7:       #c1c1c1
 *.color15:      #c1c1c1
+
 ! others
 URxvt.colorIT:  #5F8787
 URxvt.colorBD:  #d3d3d3
 URxvt.colorUL:  #5F8787
+URxvt.font: xft:Consolas-9:antialias=true:autohinting=true
+URxvt.boldFont: xft:Consolas-9:antialias=true:autohinting=true
+URxvt.letterSpace: -1
+
+! scrollbar
+URxvt.scrollBar: false
+!URxvt.scrollTtyOutput:   false
+!URxvt.scrollWithBuffer:  true
+!URxvt.scrollTtyKeypress: true
+URxvt.scrollstyle: rxvt
+URxvt.font: xft:Consolas-9:antialias=true:autohinting=true
+
+URxvt.depth: 32
+URxvt.background: [98]#282828
+URxvt.foreground: #EBDBB2
+URxvt.color0:     #282828
+URxvt.color1:     #CC241D
+URxvt.color2:     #98971A
+URxvt.color3:     #D79921
+URxvt.color4:     #458588
+URxvt.color5:     #B16286
+URxvt.color6:     #689D6A
+URxvt.color7:     #A89984
+URxvt.color8:     #928374
+URxvt.color9:     #FB4934
+URxvt.color10:    #B8BB26
+URxvt.color11:    #FABD2F
+URxvt.color12:    #83A598
+URxvt.color13:    #D3869B
+URxvt.color14:    #8EC07C
+URxvt.color15:    #EBDBB2
+
+URxvt.fading:     20
+URxvt.transparent: true
+URxvt.shading: 20
+
