@@ -1,6 +1,6 @@
-" =================
-" plugins (vim-plug)
-" =================
+" =================================
+" plugins (requires vim-plug setup)
+" =================================
 
 " Begin including plugins
 call plug#begin('~/.vim/plugitin')
