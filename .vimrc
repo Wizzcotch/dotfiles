@@ -6,7 +6,6 @@
 call plug#begin('~/.vim/plugitin')
 
 Plug 'nathanaelkane/vim-indent-guides'
-Plug 'flazz/vim-colorschemes'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
 Plug 'terryma/vim-multiple-cursors'
