@@ -81,6 +81,12 @@ nnoremap <F3>      :IndentGuidesToggle<CR>
 " =================
 " color/font config
 " =================
+
+" Need these lines for tmux compatibility
+set background=dark
+set t_Co=256
+
+" Color scheme :)
 colorscheme molokai
 
 " ======================
