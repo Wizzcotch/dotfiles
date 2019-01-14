@@ -9,6 +9,9 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
 Plug 'terryma/vim-multiple-cursors'
+Plug 'w0rp/ale'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'prabirshrestha/async.vim'
 
 " Initialize plugins
 call plug#end()
@@ -111,3 +114,33 @@ let g:multi_cursor_quit_key            = '<Esc>'
 " let g:multi_cursor_prev_key            = '<C-p>'
 " let g:multi_cursor_skip_key            = '<C-x>'
 " let g:multi_cursor_quit_key            = '<Esc>'
+
+" ==========
+" ale config
+" ==========
+
+" Enable completion where available (requires LSP server configuration: see
+" vim-lsp config in this file)
+let g:ale_completion_enabled = 1
+let g:ale_completion_delay = 100
+let g:ale_completion_max_suggestions = 5
+
+" ==============
+" vim-lsp config
+" ==============
+
+" Register 'clangd' LSP server if binary exists and use it for omni-completion
+if executable('clangd')
+    augroup lsp_clangd
+        autocmd!
+        autocmd User lsp_setup call lsp#register_server({
+                   \ 'name': 'clangd',
+                   \ 'cmd': {server_info->['clangd']},
+                   \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp'],
+                   \ })
+        autocmd FileType c setlocal omnifunc=lsp#complete
+        autocmd FileType cpp setlocal omnifunc=lsp#complete
+        autocmd FileType objc setlocal omnifunc=lsp#complete
+        autocmd FileType objcpp setlocal omnifunc=lsp#complete
+    augroup end
+endif
