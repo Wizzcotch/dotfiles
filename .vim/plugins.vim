@@ -20,15 +20,14 @@ call plug#end()
 " vim indent guides
 " =================
 
-" Change characters
-let g:indentguides_spacechar = '|'
-let g:indentguides_tabchar = '-'
+let g:indent_guides_start_level = 2
+let g:indent_guides_guide_size = 1
 
 " ======================
 " multi cursor remappings
 " ======================
-let g:multi_cursor_use_default_mapping=0
 
+let g:multi_cursor_use_default_mapping = 0
 let g:multi_cursor_start_word_key      = '<C-N>'
 let g:multi_cursor_select_all_word_key = '<A-N>'
 let g:multi_cursor_start_key           = 'g<C-N>'
