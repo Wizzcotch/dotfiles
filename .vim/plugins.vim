@@ -67,12 +67,12 @@ let g:ale_cpp_clangd_executable = 'clangd-7'
 
 " Register 'clangd' LSP server if binary exists and use it for omni-completion
 let clang = 'clangd-7' " Usually 'clangd'
-if executable(clang)
+if executable(g:clang)
     augroup lsp_clangd
         autocmd!
         autocmd User lsp_setup call lsp#register_server({
                    \ 'name': 'clangd',
-                   \ 'cmd': {server_info->[clang]},
+                   \ 'cmd': {server_info->[g:clang]},
                    \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp'],
                    \ })
         autocmd FileType c setlocal omnifunc=lsp#complete
