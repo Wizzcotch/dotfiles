@@ -1,0 +1,14 @@
+# YAML file for list of dotfiles to sync via dotfs.py
+#
+# Layout is as follows:
+#
+# 'Category/Tool':
+#    - File (full path from top of dotfiles dir)
+#    - File2 ...
+
+Vim:
+    - .vimrc
+    - .vim/config.vim
+    - .vim/functions.vim
+    - .vim/mappings.vim
+    - .vim/plugins.vim
