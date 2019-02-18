@@ -1,4 +1,13 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
+
+# Some enhancements if I have time:
+#
+# - Diff also for modification time (perhaps to suggest --reverse or smarter sync operations)
+# - Employ pretty print or tabularize for better diff display
+# - Delineate stages with indentation/markings for readability
+# - Add verbosity flag
+# - Add ignore flag (to ignore files/categories)
+# - Add customized support for gitconfig (e.g. want to extract only aliases)
 
 import argparse
 import filecmp
@@ -24,7 +33,7 @@ def create_parser():
     }
 
     mode_help = "\n   " + "\n   ".join("{0} - {1}".format(cmd, msg) for (cmd, msg) in mode_choices.items())
-    parser.add_argument("mode", choices=mode_choices.keys(), default="list", help="Run sync in a mode: " + mode_help, metavar="mode")
+    parser.add_argument("mode", choices=mode_choices.keys(), default="list", help="Run in one of the following modes: " + mode_help, metavar="mode")
 
     # Add other arguments
     parser.add_argument("-s", "--src", default=DEFAULT_DOTFILES_PATH, help="Path of dotfiles dir/repo")
@@ -49,8 +58,6 @@ def diff_dotfiles(dir1, dir2, dotfiles):
     """ Diff dotfiles between two directories """
     diffs = {}
     for category in dotfiles:
-
-        # Each entry is [filename, dir1 status, dir2 status]
         entries = []
         for df in dotfiles[category]:
             path1 = path.join(dir1, df)
@@ -59,9 +66,11 @@ def diff_dotfiles(dir1, dir2, dotfiles):
             exists1 = path.isfile(path1)
             exists2 = path.isfile(path2)
 
+            # Compare file contents if both file exists
             if exists1 and exists2:
                 status = "Same" if filecmp.cmp(path1, path2, shallow=False) else "Different"
                 entries.append({'filename': df, 'dir1': status, 'dir2': status})
+            # Otherwise, state whether they're present or missing
             else:
                 st_func = lambda s : "Exists" if s else "Missing"
                 entries.append({'filename': df, 'dir1': st_func(exists1), 'dir2': st_func(exists2)})
@@ -78,6 +87,10 @@ def copy_dotfiles(src, dest, dotfiles, diff_only=True, dry_run=False):
 
     diffs = diff_dotfiles(src, dest, dotfiles)
     staged = {c:[gen_copy_args(d['filename']) for d in diffs[c] if should_copy(d)] for c,d in diffs.items()}
+
+    if len(staged) <= 0:
+        print("No files to sync")
+        return
 
     for c in staged:
         if len(staged[c]) <= 0:

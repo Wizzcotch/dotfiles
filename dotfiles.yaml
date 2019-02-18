@@ -6,9 +6,12 @@
 #    - File (full path from top of dotfiles dir)
 #    - File2 ...
 
-Vim:
+vim:
     - .vimrc
     - .vim/config.vim
     - .vim/functions.vim
     - .vim/mappings.vim
     - .vim/plugins.vim
+
+tmux:
+    - .tmux.conf

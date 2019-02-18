@@ -1,0 +1,24 @@
+[user]
+	name = Miguel Lumapat
+[core]
+	editor = vim
+[alias]
+    a  = add
+    bmg = branch --merged
+	br = branch
+	cf = config
+    cm = commit -m
+	co = checkout
+    cob = checkout -b
+	ct = commit
+	cp = cherry-pick
+    d = diff
+    diff-br = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+	f = fetch
+    find = "!git ls-files | grep"
+	l = log
+    l1 = log --oneline --decorate
+    phd = push origin HEAD
+    phdf = push -f origin HEAD
+	st = status
+    sync = !git pull upstream HEAD && git push origin HEAD
