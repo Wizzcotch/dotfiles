@@ -1,15 +1,23 @@
 [user]
 	name = Miguel Lumapat
+	email = mlumapat@bloomberg.net
 [core]
 	editor = vim
+[http]
+    sslVerify = false
+    proxy = http://devproxy.bloomberg.com:82
+[http "https://bbgithub.dev.bloomberg.com/"]
+    proxy =
 [alias]
     a  = add
-    bmg = branch --merged
+    bdo = "!f() { git branch --merged | grep -vE \"(^\\*|master)\" | xargs git branch -d; }; f"
 	br = branch
 	cf = config
     cm = commit -m
+    cms = !git checkout master && git pull upstream HEAD && git push origin HEAD
 	co = checkout
     cob = checkout -b
+    com = checkout master
 	ct = commit
 	cp = cherry-pick
     d = diff
@@ -18,7 +26,15 @@
     find = "!git ls-files | grep"
 	l = log
     l1 = log --oneline --decorate
+    nn = config --global --get-regexp alias*
+    nuke = clean -fdX
     phd = push origin HEAD
     phdf = push -f origin HEAD
+    pog = pull origin HEAD
+    pwpw = "!f() { git add .; git commit -m \"$1\"; git push origin HEAD; }; f"
+    rv = remote -v
+    rewind = !git stash && git stash drop
 	st = status
     sync = !git pull upstream HEAD && git push origin HEAD
+    zz = "!f() { git checkout -b `echo \"$1\" | tr ' ' '-' | tr '[:upper:]' '[:lower:]'`; git add .; git commit -m \"$1\"; git push origin HEAD; git checkout master; }; f" ;zzz = ZOOM ZOOM for one-commit pushes
+[https]
